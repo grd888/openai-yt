@@ -1,8 +1,9 @@
-import { client } from "./config/openaiConfig.js";
+import * as readline from "node:readline";
+import { generateMeta } from "./controllers/openAIController.js";
 
-const response = await client.responses.create({
-    model: "gpt-4.1-nano",
-    input: "Write a one-sentence bedtime story about a unicorn."
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-console.log(response.output_text);
+rl.question("YouTube Video Title: \n", generateMeta);
